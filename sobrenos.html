@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Pure Matter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon com símbolo de folha -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+    
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #8a9b69;
+            --accent-color: #c8c6a7;
+            --light-color: #f5f5f5;
+            --dark-color: #333333;
+            --text-color: #444444;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-icons a {
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .header-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Sobre Nós */
+        .about-hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(rgba(45, 90, 74, 0.8), rgba(45, 90, 74, 0.8)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Nossa História */
+        .our-story {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .story-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .story-text {
+            flex: 1;
+        }
+
+        .story-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+        }
+
+        .story-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .story-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Valores */
+        .values {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Equipe */
+        .team {
+            padding: 70px 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 20px;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .member-role {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Missão e Visão */
+        .mission-vision {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+
+        .mv-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .mv-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .mv-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .mv-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Estatísticas */
+        .stats {
+            padding: 80px 0;
+            background: linear-gradient(rgba(45, 90, 74, 0.9), rgba(45, 90, 74, 0.9)), url('https://images.unsplash.com/photo-1558769132-cb25e5b8351f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            nav {
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .story-content {
+                flex-direction: column;
+            }
+
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-leaf"></i> Pure Matter
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#categories">Categorias</a></li>
+                    <li><a href="sobrenos.html">Sobre Nós</a></li>
+                    <li><a href="index.html#featured">Produtos</a></li>
+                    <li><a href="index.html#sustainability">Sustentabilidade</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="#" id="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Sobre Nós -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>Nossa História</h1>
+            <p>Conheça a jornada da Pure Matter em direção a um futuro mais sustentável na moda</p>
+        </div>
+    </section>
+
+    <!-- Nossa História -->
+    <section class="our-story">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quem Somos</h2>
+                <p>Uma marca nascida da paixão por moda e respeito pelo meio ambiente</p>
+            </div>
+            
+            <div class="story-content">
+                <div class="story-text">
+                    <h3>Nossa Origem</h3>
+                    <p>A Pure Matter nasceu em 2018 da visão de três amigos que compartilhavam uma preocupação comum: o impacto ambiental da indústria da moda. Observando o excesso de consumo e o desperdício gerado pela fast fashion, decidimos criar uma alternativa que combinasse estilo, qualidade e responsabilidade ambiental.</p>
+                    <p>Começamos como uma pequena oficina no interior de São Paulo, trabalhando com artesãos locais e utilizando materiais naturais da região. Nosso primeiro produto foi uma linha básica de camisetas feitas com algodão orgânico, tingidas com pigmentos naturais extraídos de plantas nativas.</p>
+                    <p>Hoje, somos uma equipe de 50 pessoas apaixonadas, mas mantemos os mesmos valores que nos guiaram desde o início: transparência, qualidade e respeito pelo planeta.</p>
+                </div>
+                <div class="story-img">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Nossa equipe">
+                </div>
+            </div>
+
+            <div class="story-content">
+                <div class="story-img">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Nossa produção">
+                </div>
+                <div class="story-text">
+                    <h3>Nossa Evolução</h3>
+                    <p>De 2018 até hoje, percorremos um longo caminho. Expandimos nossa linha de produtos para incluir roupas sofisticadas, streetwear e moda infantil, sempre mantendo nosso compromisso com a sustentabilidade.</p>
+                    <p>Implementamos programas de reciclagem em nossas operações, onde 95% dos resíduos de produção são reaproveitados. Desenvolvemos parcerias com comunidades agrícolas para cultivar algodão orgânico e outras fibras sustentáveis, garantindo condições de trabalho justas em toda nossa cadeia produtiva.</p>
+                    <p>Em 2022, alcançamos a marca de 100% de energia renovável em nossas operações e estabelecemos a meta de nos tornarmos uma empresa carbono zero até 2025.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="values">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Valores</h2>
+                <p>Princípios que guiam cada decisão que tomamos</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Sustentabilidade</h3>
+                    <p>Priorizamos materiais e processos que minimizam nosso impacto ambiental, desde a escolha das fibras até a entrega final.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Transparência</h3>
+                    <p>Acreditamos em compartilhar abertamente nossos processos, desafios e conquistas com nossa comunidade.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Qualidade</h3>
+                    <p>Criamos peças duráveis que resistem ao tempo, combatendo a cultura do descartável na moda.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidade</h3>
+                    <p>Valorizamos cada pessoa em nossa cadeia produtiva e construímos relações baseadas no respeito mútuo.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Inovação</h3>
+                    <p>Buscamos constantemente novas tecnologias e métodos para tornar nossa operação mais sustentável.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Regeneração</h3>
+                    <p>Vamos além da sustentabilidade, trabalhando para regenerar os ecossistemas que nos fornecem recursos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Missão e Visão -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="section-title">
+                <h2>Missão e Visão</h2>
+                <p>O que nos move e para onde estamos indo</p>
+            </div>
+            <div class="mv-container">
+                <div class="mv-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Nossa Missão</h3>
+                    <p>Oferecer moda de qualidade que respeita o planeta e as pessoas, provando que estilo e sustentabilidade podem andar juntos. Queremos inspirar uma mudança positiva na indústria da moda através de nossas escolhas e práticas.</p>
+                </div>
+                <div class="mv-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Nossa Visão</h3>
+                    <p>Ser referência em moda sustentável no Brasil até 2030, influenciando toda a cadeia produtiva a adotar práticas mais responsáveis. Imagina-mos um futuro onde a moda regenerativa seja a norma, não a exceção.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe -->
+    <section class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossa Equipe</h2>
+                <p>Conheça as pessoas por trás da Pure Matter</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-img" style="background-image: url('img/f2.jpg')"></div>
+                    <div class="member-info">
+                        <h3>Wender Lopes</h3>
+                        <p class="member-role">CEO & Progamador</p>
+                        
+                    </div>
+                </div>
+                <div class="team-member">
+                      <div class="member-img" style="background-image: url('img/f4.jpg')"></div><div class="member-info">
+                        <h3>Fernanda Rocha</h3>
+                        <p class="member-role">Diretora de Operações</p>
+                          </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img" style="background-image: url('img/f6.jpg')"></div>
+                    <div class="member-info">
+                        <h3>Lui Martin</h3>
+                        <p class="member-role">Diretor Criativo</p>
+                        </div>
+                </div>
+                <div class="team-member">
+                      <div class="member-img" style="background-image: url('img/f5.jpg')"></div> <div class="member-info">
+                        <h3>Amanda Reis</h3>
+                        <p class="member-role">Gerente de Sustentabilidade</p>
+                         </div>
+                </div>
+                  <div class="team-member">
+                    <div class="member-img" style="background-image: url('img/f3.jpg')"></div>
+                    <div class="member-info">
+                        <h3>Thiago Valentim</h3>
+                        <p class="member-role">Gerente de Vendas</p>
+                         </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estatísticas -->
+    <section class="stats">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Números</h2>
+                <p>Impacto positivo que geramos juntos</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>15.000+</h3>
+                    <p>Clientes Satisfeitos</p>
+                </div>
+                <div class="stat-item">
+                    <h3>95%</h3>
+                    <p>Resíduos Reciclados</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Comunidades Apoiadas</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Energia Renovável</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Pure Matter</h3>
+                    <p>Moda sustentável com estilo e responsabilidade. Cuidando do planeta enquanto você se veste bem.</p>
+                    <div class="social-icons">
+                      
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                   
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#categories">Categorias</a></li>
+                        <li><a href="sobrenos.html">Sobre Nós</a></li>
+                        <li><a href="index.html#sustainability">Sustentabilidade</a></li>
+                   
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Produtos</h3>
+                    <ul>
+                        <li><a href="street.html">Streetwear</a></li>
+                        <li><a href="sophisticated.html">Roupas Sofisticadas</a></li>
+                        <li><a href="kids.html">Moda Infantil</a></li>
+                       
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua Verde, 123 - São Paulo, SP</li>
+                        <li><i class="fas fa-phone"></i> (11) 9999-9999</li>
+                        <li><i class="fas fa-envelope"></i> contato@purematter.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Pure Matter. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Animação de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Fechar menu mobile após clicar em um link
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('nav').classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Efeito de contador nas estatísticas
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    // Animação simples para as estatísticas
+                    const statItems = document.querySelectorAll('.stat-item h3');
+                    statItems.forEach(item => {
+                        const finalValue = item.textContent;
+                        item.textContent = '0';
+                        
+                        let current = 0;
+                        const increment = parseInt(finalValue) / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if(current >= parseInt(finalValue)) {
+                                item.textContent = finalValue;
+                                clearInterval(timer);
+                            } else {
+                                item.textContent = Math.floor(current);
+                            }
+                        }, 50);
+                    });
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observar a seção de estatísticas
+        const statsSection = document.querySelector('.stats');
+        if(statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>

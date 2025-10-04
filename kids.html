@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moda Infantil - Pure Matter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+    
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #8a9b69;
+            --accent-color: #c8c6a7;
+            --light-color: #f5f5f5;
+            --dark-color: #333333;
+            --text-color: #444444;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-icons a {
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .header-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+           /* Hero da Coleção */
+        .collection-hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background-color: var(--light-color);
+            background: linear-gradient(rgba(45, 90, 74, 0.7), rgba(45, 90, 74, 0.7)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .collection-hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .collection-hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Produtos da Coleção */
+        .collection-products {
+            padding: 80px 0;
+        }
+
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .filter-options select {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Modal do Carrinho */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 1100;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-header h3 {
+            color: var(--primary-color);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-details h4 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .cart-item-price {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            nav {
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-leaf"></i> Pure Matter
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#categories">Categorias</a></li>
+                    <li><a href="index.html#about">Sobre</a></li>
+                    <li><a href="index.html#featured">Produtos</a></li>
+                    <li><a href="index.html#sustainability">Sustentabilidade</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="#" id="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero da Coleção Moda Infantil -->
+    <section class="collection-hero">
+        <div class="container">
+            <h1>Coleção Moda Infantil</h1>
+            <p>Roupas confortáveis e seguras para crianças, feitas com materiais naturais e não-tóxicos. Peças que respeitam a pele sensível dos pequenos e o meio ambiente.</p>
+        </div>
+    </section>
+
+    <!-- Produtos Moda Infantil -->
+    <section class="collection-products">
+        <div class="container">
+            <div class="filter-bar">
+                <h3>Todos os Produtos</h3>
+                <div class="filter-options">
+                    <select id="sort-by">
+                        <option value="default">Ordenar por</option>
+                        <option value="price-low">Preço: Menor para Maior</option>
+                        <option value="price-high">Preço: Maior para Menor</option>
+                        <option value="name">Nome</option>
+                    </select>
+                    <select id="filter-category">
+                        <option value="all">Todas as Categorias</option>
+                        <option value="bebes">Bebês (0-2 anos)</option>
+                        <option value="criancas">Crianças (3-8 anos)</option>
+                        <option value="pre-adolescentes">Pré-adolescentes (9-12 anos)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1507919900708-30c8f0174f38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="product-content">
+                        <h3>Conjunto Bebê de Bambu</h3>
+                        <p class="price">R$ 129,90</p>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart" data-product="Conjunto Bebê de Bambu" data-price="129.90">Comprar</button>
+                            <button class="btn btn-outline">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="product-content">
+                        <h3>Vestido Infantil de Algodão Orgânico</h3>
+                        <p class="price">R$ 149,90</p>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart" data-product="Vestido Infantil de Algodão Orgânico" data-price="149.90">Comprar</button>
+                            <button class="btn btn-outline">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1519238263530-99c1fc8c13e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="product-content">
+                        <h3>Conjunto Moletom Infantil</h3>
+                        <p class="price">R$ 179,90</p>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart" data-product="Conjunto Moletom Infantil" data-price="179.90">Comprar</button>
+                            <button class="btn btn-outline">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="product-content">
+                        <h3>Pijama Infantil de Fibra de Eucalipto</h3>
+                        <p class="price">R$ 119,90</p>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart" data-product="Pijama Infantil de Fibra de Eucalipto" data-price="119.90">Comprar</button>
+                            <button class="btn btn-outline">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1583496661160-fb5886a13d77?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="product-content">
+                        <h3>Macacão Infantil de Linho</h3>
+                        <p class="price">R$ 159,90</p>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart" data-product="Macacão Infantil de Linho" data-price="159.90">Comprar</button>
+                            <button class="btn btn-outline">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1507919900708-30c8f0174f38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="product-content">
+                        <h3>Conjunto de Banho Sustentável</h3>
+                        <p class="price">R$ 139,90</p>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart" data-product="Conjunto de Banho Sustentável" data-price="139.90">Comprar</button>
+                            <button class="btn btn-outline">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Pure Matter</h3>
+                    <p>Moda sustentável com estilo e responsabilidade. Cuidando do planeta enquanto você se veste bem.</p>
+                    <div class="social-icons">
+                
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#categories">Categorias</a></li>
+                        <li><a href="sobrenos.html">Sobre Nós</a></li>
+                        <li><a href="index.html#sustainability">Sustentabilidade</a></li>
+           
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Produtos</h3>
+                    <ul>
+                        <li><a href="street.html">Streetwear</a></li>
+                        <li><a href="sophisticated.html">Roupas Sofisticadas</a></li>
+                        <li><a href="kids.html">Moda Infantil</a></li>
+                    
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua Verde, 123 - São Paulo, SP</li>
+                        <li><i class="fas fa-phone"></i> (11) 9999-9999</li>
+                        <li><i class="fas fa-envelope"></i> contato@purematter.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Pure Matter. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal do Carrinho -->
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Itens do carrinho serão inseridos aqui -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cart-total">R$ 0,00</span>
+        </div>
+        <button class="btn" style="width: 100%; margin-top: 20px;">Finalizar Compra</button>
+    </div>
+
+    <script>
+        // Menu mobile
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Sistema de carrinho
+        let cart = [];
+        const cartIcon = document.getElementById('cart-icon');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCart = document.getElementById('close-cart');
+        const overlay = document.getElementById('overlay');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const cartCount = document.querySelector('.cart-count');
+
+        // Abrir carrinho
+        cartIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            cartModal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Fechar carrinho
+        closeCart.addEventListener('click', function() {
+            cartModal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        overlay.addEventListener('click', function() {
+            cartModal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Adicionar produto ao carrinho
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.getAttribute('data-product');
+                const price = parseFloat(this.getAttribute('data-price'));
+                
+                // Verificar se o produto já está no carrinho
+                const existingItem = cart.find(item => item.product === product);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        product: product,
+                        price: price,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                // Feedback visual
+                this.textContent = 'Adicionado!';
+                setTimeout(() => {
+                    this.textContent = 'Comprar';
+                }, 1000);
+            });
+        });
+
+        // Atualizar carrinho
+        function updateCart() {
+            // Limpar carrinho
+            cartItems.innerHTML = '';
+            
+            let total = 0;
+            let count = 0;
+            
+            // Adicionar itens ao carrinho
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                count += item.quantity;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-img" style="background-image: url('https://images.unsplash.com/photo-1507919900708-30c8f0174f38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="cart-item-details">
+                        <h4>${item.product}</h4>
+                        <p class="cart-item-price">R$ ${item.price.toFixed(2)}</p>
+                        <div class="cart-item-actions">
+                            <button class="quantity-btn decrease" data-index="${index}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn increase" data-index="${index}">+</button>
+                            <button class="remove-item" data-index="${index}" style="margin-left: 10px; background: none; border: none; color: #ff6b6b; cursor: pointer;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            // Atualizar total e contador
+            cartTotal.textContent = `R$ ${total.toFixed(2)}`;
+            cartCount.textContent = count;
+            
+            // Adicionar eventos para os botões de quantidade
+            document.querySelectorAll('.decrease').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    if (cart[index].quantity > 1) {
+                        cart[index].quantity -= 1;
+                        updateCart();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.increase').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    cart[index].quantity += 1;
+                    updateCart();
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    updateCart();
+                });
+            });
+            
+            // Se o carrinho estiver vazio, mostrar mensagem
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; padding: 20px;">Seu carrinho está vazio</p>';
+            }
+        }
+
+        // Inicializar carrinho
+        updateCart();
+    </script>
+</body>
+</html>
